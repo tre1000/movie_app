@@ -10,7 +10,7 @@ class Api::MoviesController < ApplicationController
   end
 
   def select_movie_action
-    movie_selection = params["movie_id"]
+    movie_selection = params[:id]
     @selected_movie = Movie.find_by(id: movie_selection)
     render "select_movie.json.jb"
   end

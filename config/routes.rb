@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     get "/all_movies" => "movies#all_movies_action"
     get "/random_movie" => "movies#random_movie_action"
     get "/select_movie" => "movies#select_movie_action"
+    get "/select_movie/:id" => "movies#select_movie_action"
+    post "/select_movie" => "movies#select_movie_action"
   end
 end

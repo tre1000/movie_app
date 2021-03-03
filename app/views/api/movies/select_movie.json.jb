@@ -1,7 +1,0 @@
-@selected_movie
-{
-  id: @selected_movie.id,
-  title: @selected_movie.title,
-  year: @selected_movie.year,
-  plot: @selected_movie.plot,
-}

@@ -1,17 +1,41 @@
 class Api::MoviesController < ApplicationController
-  def all_movies_action
+  def index
     @movies = Movie.all
-    render "all_movies.json.jb"
+    render "index.json.jb"
   end
 
-  def random_movie_action
-    @random_movie = Movie.find_by(id: rand(1..Movie.count))
-    render "random_movie.json.jb"
+  def show
+    id = params[:id]
+    @movie = Movie.find(id)
+    render "show.json.jb"
   end
 
-  def select_movie_action
-    movie_selection = params[:id]
-    @selected_movie = Movie.find_by(id: movie_selection)
-    render "select_movie.json.jb"
+  def create
+    @movie = Movie.create(
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plot],
+    )
+    render "show.json.jb"
+  end
+
+  def update
+    id = params[:id]
+    @movie = Movie.find(id)
+
+    @movie.title = params[:title] || @movie.title
+    @movie.year = params[:year] || @movie.year
+    @movie.plot = params[:plot] || @movie.plot
+
+    @movie.save
+
+    render "show.json.jb"
+  end
+
+  def destroy
+    id = params[:id]
+    @movie = Movie.find(id)
+    @movie.destroy
+    render json: { message: "movie has been deleted." }
   end
 end

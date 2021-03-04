@@ -1,6 +1,12 @@
 class Api::ActorsController < ApplicationController
-  def all_actors_action
+  def index
     @actors = Actor.all
-    render "all_actors.json.jb"
+    render "index.json.jb"
+  end
+
+  def show
+    id = params[:id]
+    @actor = Actor.find(id)
+    render "show.json.jb"
   end
 end

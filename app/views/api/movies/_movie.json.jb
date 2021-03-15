@@ -2,7 +2,9 @@
   id: movie.id,
   title: movie.title,
   year: movie.year,
+  genres: movie.genres,
   plot: movie.plot,
   director: movie.director,
   english: movie.english,
+
 }
